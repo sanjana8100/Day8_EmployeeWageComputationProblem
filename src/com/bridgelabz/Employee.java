@@ -5,12 +5,14 @@ public class Employee {
     public static final int IsPartTime = 2;
     public static final int EmpWagePerHour = 20;
     public static final int WorkingDaysPerMonth = 20;
+    public static final int TotalWorkingHours = 100;
     public static void main(String[] args) {
 
         System.out.println("Welcome to Employee Wage Computation Program On Master Branch");
 
-        int empHrs, empWagePerDay, empWagePerMonth = 0;
-        for(int day = 0 ; day<=WorkingDaysPerMonth ; day++) {
+        int empHrs, empWagePerDay, empWagePerMonth=0, totalWorkingDays=0, totalEmpHours = 0;
+        while(totalEmpHours <= TotalWorkingHours && totalWorkingDays < WorkingDaysPerMonth) {
+            totalWorkingDays++;
             double empCheck = Math.floor(Math.random() * 10) % 2;
             switch ((int) empCheck) {
                 case IsFullTime:
@@ -26,9 +28,9 @@ public class Employee {
                     empHrs = 0;
                     break;
             }
+            totalEmpHours+=empHrs;
             empWagePerDay = empHrs * EmpWagePerHour;
             empWagePerMonth += empWagePerDay;
-            System.out.println("Employee Hours: " + empHrs);
             System.out.println("Employee Wage per Day: " + empWagePerDay);
         }
         System.out.println("Emp Wage Per Month : "+empWagePerMonth);
