@@ -6,10 +6,8 @@ public class Employee {
     public static final int EmpWagePerHour = 20;
     public static final int WorkingDaysPerMonth = 20;
     public static final int TotalWorkingHours = 100;
-    public static void main(String[] args) {
 
-        System.out.println("Welcome to Employee Wage Computation Program On Master Branch");
-
+    public int ComputeWage(){
         int empHrs, empWagePerDay, empWagePerMonth=0, totalWorkingDays=0, totalEmpHours = 0;
         while(totalEmpHours <= TotalWorkingHours && totalWorkingDays < WorkingDaysPerMonth) {
             totalWorkingDays++;
@@ -33,6 +31,14 @@ public class Employee {
             empWagePerMonth += empWagePerDay;
             System.out.println("Employee Wage per Day: " + empWagePerDay);
         }
-        System.out.println("Emp Wage Per Month : "+empWagePerMonth);
+        return empWagePerMonth;
+    }
+    public static void main(String[] args) {
+
+        System.out.println("Welcome to Employee Wage Computation Program On Master Branch");
+
+        Employee employee= new Employee();
+        int MonthlyWage= employee.ComputeWage();
+        System.out.println("Emp Wage Per Month : "+MonthlyWage);
     }
 }
