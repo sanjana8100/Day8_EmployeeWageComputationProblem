@@ -6,9 +6,31 @@ public class Employee {
 
         public static final int IsFullTime=1;
         public static final int IsPartTime = 2;
+        public static int EmpWagePerHour, WorkingDaysPerMonth, TotalWorkingHours;
 
-    public void ComputeWage(int EmpWagePerHour, int WorkingDaysPerMonth, int TotalWorkingHours){
-        int empHrs, empWagePerDay, empWagePerMonth=0, totalWorkingDays=0, totalEmpHours = 0;
+        public void EmpWageBuilder1() {
+            EmpWagePerHour=300;
+            WorkingDaysPerMonth=20;
+            TotalWorkingHours=100;
+            System.out.println("Total Company Wage: "+(EmpWagePerHour*TotalWorkingHours));
+        }
+
+        public void EmpWageBuilder2() {
+            EmpWagePerHour=500;
+            WorkingDaysPerMonth=23;
+            TotalWorkingHours=120;
+            System.out.println("Total Company Wage: "+(EmpWagePerHour*TotalWorkingHours));
+        }
+
+        public void EmpWageBuilder3() {
+            EmpWagePerHour=200;
+            WorkingDaysPerMonth=25;
+            TotalWorkingHours=150;
+            System.out.println("Total Company Wage: "+(EmpWagePerHour*TotalWorkingHours));
+        }
+
+    public void ComputeWage(){
+        int empHrs, empWagePerDay, empWagePerMonth=0, totalWorkingDays=0, totalEmpHours = 0, totalWage;
         while(totalEmpHours <= TotalWorkingHours && totalWorkingDays < WorkingDaysPerMonth) {
             totalWorkingDays++;
             double empCheck = Math.floor(Math.random() * 10) % 2;
@@ -31,7 +53,9 @@ public class Employee {
             empWagePerMonth += empWagePerDay;
             System.out.println("Employee Wage per Day: " + empWagePerDay);
         }
-        System.out.println("Emp Wage Per Month : "+empWagePerMonth);
+        System.out.println("Employee Wage Per Month : "+empWagePerMonth);
+        totalWage= empWagePerMonth * 12;
+        System.out.println("Total Wage of the Employee Per Year: "+totalWage);
     }
     public static void main(String[] args) {
 
@@ -43,16 +67,21 @@ public class Employee {
         Employee employee= new Employee();
         switch (company){
             case 1:
-                employee.ComputeWage(300,20,100);
+                employee.EmpWageBuilder1();
+                employee.ComputeWage();
                 break;
             case 2:
-                employee.ComputeWage(500,23,120);
+                employee.EmpWageBuilder2();
+                employee.ComputeWage();
                 break;
             case 3:
-                employee.ComputeWage(200,25,150);
+                employee.EmpWageBuilder3();
+                employee.ComputeWage();
                 break;
             default:
-                System.out.println("Please choose a valid company.");
+                System.out.println("Enter a valid company!!!");
+                break;
         }
+
     }
 }
